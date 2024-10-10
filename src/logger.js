@@ -1,3 +1,21 @@
+// import { createLogger, format, transports } from 'winston';
+
+
+// const logger = createLogger({
+//   level: 'info',
+//   format: format.json(),
+//   transports: [
+//     new transports.Console({
+//       handleExceptions: true,
+//     }),
+//   ],
+// });
+
+// export default logger;
+
+
+
+
 import { createLogger, format, transports } from 'winston';
 
 const logger = createLogger({

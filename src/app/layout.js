@@ -1,7 +1,8 @@
-import { Prompt } from 'next/font/google'
-
-import { Aside } from '@/components/Aside'
-import './globals.css'
+import { Prompt } from 'next/font/google';
+import { Aside } from '@/components/Aside';
+import '../styles/globals.css';
+import ThemeToggleButton from '@/components/ThemeToggle/ThemeToggle';
+import { Heading } from '@/components/Heading';
 
 export const metadata = {
   title: 'Code Connect',
@@ -16,10 +17,18 @@ const prompt = Prompt({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br" className={prompt.className}>
-      <body>
+    <html lang="pt-br" className={`${prompt.className} bg-white dark:bg-gray-900`}>
+      <body className="text-black dark:text-white">
+        <header className={`${prompt.className} bg-white dark:bg-gray-900`}>
+          <nav className="flex items-center justify-between p-4">
+
+            <ThemeToggleButton />
+          </nav>
+
+        </header>
         <div className='app-container'>
-          <div>
+
+          <div >
             <Aside />
           </div>
           <div className='main-content'>
@@ -28,5 +37,5 @@ export default function RootLayout({ children }) {
         </div>
       </body>
     </html>
-  )
+  );
 }

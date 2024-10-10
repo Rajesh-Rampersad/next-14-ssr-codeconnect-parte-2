@@ -1,26 +1,26 @@
-import Image from "next/image"
-import { Avatar } from "../Avatar"
-import styles from './cardpost.module.css'
-import Link from "next/link"
+import Image from "next/image";
+import { Avatar } from "../Avatar";
+import Link from "next/link";
 
 export const CardPost = ({ post, highlight }) => {
     return (
-        <Link href={`/posts/${post.slug}`} className={styles.link}>
-             <article className={styles.card} style={{ width: highlight ? 993 : 486}}>
-                <header className={styles.header}>
-                    <figure style={{ height: highlight ? 300 : 133}}>
+        <Link href={`/posts/${post.slug}`} className="text-decoration-none cursor-pointer">
+            <article className="w-[486px] rounded-md bg-white dark:bg-[#171D1F] min-h-[500px] flex flex-col">
+                <header className="rounded-t-lg bg-slate-300 dark:bg-gray-700 p-6">
+                    <figure className={`relative ${highlight ? 'h-[300px]' : 'h-[133px]'}`}>
                         <Image
                             src={post.cover}
+                            objectFit="contain"
                             fill
                             alt={`Capa do post de titulo: ${post.title}`}
                         />
                     </figure>
                 </header>
-                <section className={styles.body}>
-                    <h2>{post.title}</h2>
-                    <p>{post.body}</p>
+                <section className="flex-grow flex flex-col  text-black dark:text-white gap-16">
+                    <h2 className="text-lg font-semibold leading-relaxed mb-0">{post.title}</h2>
+                    <p className="text-sm font-normal leading-relaxed mb-0 flex-grow">{post.body}</p>
                 </section>
-                <footer className={styles.footer}>
+                <footer className="p-4 bg-gray-800  bg-transparent dark:bg-gray-700 rounded-b-lg flex justify-between items-center">
                     <Avatar
                         imageSrc={post.author.avatar}
                         name={post.author.username}
@@ -28,5 +28,5 @@ export const CardPost = ({ post, highlight }) => {
                 </footer>
             </article>
         </Link>
-    )
-}
+    );
+};

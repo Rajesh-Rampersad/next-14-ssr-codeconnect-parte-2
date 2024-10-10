@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Estilos globales aplicados a body */
+body {
+  @apply m-0 min-h-screen transition-colors duration-300 ease-in-out; /* Transiciones para un cambio suave */
+}
+
+/* Tema claro */
+:root {
+  @apply bg-gradient-to-b from-[#0e1112] to-[#00090e] text-black; /* Fondo y texto en tema claro */
+}
+
+/* Tema oscuro */
+.dark {
+  @apply bg-gray-900 text-white; /* Fondo y texto en tema oscuro */
+}
+
+/* Estilos de texto */
+.text-body {
+  @apply text-gray-900; /* Color de texto en tema claro */
+}
+
+.dark .text-body {
+  @apply text-white; /* Color de texto en tema oscuro */
+}
+
+.app-container {
+  @apply w-[1200px] max-w-[90%] m-14 mx-auto;
+  @apply flex gap-7;
+  @apply min-h-screen;
+}
+.main-content {
+  @apply flex-grow;
+}
+
+a {
+  @apply text-[#81fe88] text-lg font-normal leading-[150%];
+  @apply underline;
+}
+
+a:visited {
+  @apply text-[#81fe88];
+}
+#theme-toggle {
+  @apply bg-gray-200 text-gray-600 py-2 px-4 rounded;
+}
+
+#theme-toggle:hover {
+  @apply bg-gray-300 text-gray-700;
+}
+
+button {
+  @apply bg-gray-200 text-gray-600 py-2 px-4 rounded;
+}
+
+button:hover {
+  @apply bg-gray-300 text-gray-700;
+}
+
+body.dark button {
+  @apply bg-gray-700 text-gray-200 py-2 px-4 rounded;
+}
+
+body.dark button:hover {
+  @apply bg-gray-600 text-gray-300;
+}

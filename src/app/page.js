@@ -1,9 +1,10 @@
+
 import { CardPost } from "@/components/CardPost"
 import logger from "@/logger"
-
-import styles from './page.module.css'
 import Link from "next/link"
 import db from "../../prisma/db"
+
+
 
 async function getAllPosts(page) {
   try {
@@ -35,11 +36,11 @@ export default async function Home({ searchParams }) {
   const currentPage = parseInt(searchParams?.page || 1)
   const { data: posts, prev, next } = await getAllPosts(currentPage)
   return (
-    <main className={styles.grid}>
+    <main className='flex-wrap justify-between gap-24 grid grid-cols-2 grid-rows-1'>
       {posts.map(post => <CardPost key={post.id} post={post} />)}
-      <div className={styles.links}>
-        {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
-        {next && <Link href={`/?page=${next}`}>Próxima página</Link>}
+      <div className='text-center flex-grow-1'>
+        {prev && <Link className=' text-left' href={`/?page=${prev}`}>Página anterior</Link>}
+        {next && <Link className='mx-6 text-right' href={`/?page=${next}`}>Próxima página</Link>}
       </div>
     </main>
   )

@@ -5,7 +5,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}", // Asegúrate de que estas rutas sean correctas
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/styles/**/*.{css}", // Asegúrate de que esto esté aquí
+    './src/styles/**/*.css', // Glob correcto
   ],
   theme: {
     screens: {

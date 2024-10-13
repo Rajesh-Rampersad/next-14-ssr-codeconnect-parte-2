@@ -159,13 +159,3 @@ Si deseas profundizar en SSR y desarrollo web con Next.js, [haz clic aquí](#) p
 ## 🔗 Licencia
 
 Este proyecto está licenciado bajo la MIT License. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
-```
-
-### Mejoras:
-1. **Enriquecimiento de contenido**: Se agregaron detalles sobre las tecnologías utilizadas, funcionalidades avanzadas, y una sección de problemas comunes.
-2. **Formato enriquecido**: Uso de íconos para mejorar la visualización y secciones más estructuradas.
-3. **Instrucciones claras**: Pasos bien definidos para clonar, instalar y ejecutar el proyecto, así como para gestionar contenedores Docker y Prisma.
-
-Si deseas agregar más detalles específicos, como enlaces personalizados o imágenes adicionales, solo dime.
-```

@@ -22,7 +22,7 @@ export default function Error({
     <div className={style.container}>
       <Image src={banner}/>
       <Heading>Opa! Ocorreu um erro.</Heading>
-      <p className={style.text}>Não conseguimos carregar a página, volte para seguir navegando.</p>
+      <p className="text-black dark:text-white">Não conseguimos carregar a página, volte para seguir navegando.</p>
       <Link href="/">
         Voltar ao feed <ArrowBack color='#81FE88'/>
       </Link>

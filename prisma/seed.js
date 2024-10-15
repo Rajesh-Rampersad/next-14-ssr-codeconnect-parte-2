@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function main() {
-
     const author = {
         name: "Ana Beatriz",
         username: "anabeatriz_dev",
@@ -13,9 +12,9 @@ async function main() {
         where: { username: author.username },
         update: {},
         create: author,
-    })
+    });
 
-    console.log('Author created', ana)
+    console.log('Author created', ana);
 
     const posts = [
         {
@@ -116,22 +115,23 @@ async function main() {
         }
     ];
 
-    posts.forEach(async (post) => {
+    for (const post of posts) {
         await prisma.post.upsert({
             where: { slug: post.slug },
             update: {},
             create: post
-        })
-    })
+        });
+    }
 
-    console.log('Seed OK')
+    console.log('Seed OK');
 }
+
 main()
     .then(async () => {
-        await prisma.$disconnect()
+        await prisma.$disconnect();
     })
     .catch(async (e) => {
-        console.error(e)
-        await prisma.$disconnect()
-        process.exit(1)
-    })
+        console.error(e);
+        await prisma.$disconnect();
+        process.exit(1);
+    });

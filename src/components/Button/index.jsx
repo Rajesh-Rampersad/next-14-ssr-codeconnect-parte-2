@@ -1,12 +1,16 @@
 //creacion de la funcion button  usando estilos de tailwindcss
 
-import { Children } from "react";
 
-export const Button = ({Children}) => {
-    return (
-<button className="text-[#132E35] text-center text-lg font-semibold leading-[150%] rounded-lg bg-[#81FE88] px-4 py-3 cursor-pointer border-none hover:opacity-60">
-  {Children}
-</button>
 
-        );
-}
+export const Button = ({ children }) => {
+  return (
+    <button
+      className="inline-block mr-2 text-center text-lg font-semibold leading-[100%] 
+        rounded-lg bg-[#81FE88] px-4 py-2 cursor-pointer 
+        border-opacity-10 hover:opacity-60 transition-opacity duration-300 ease-in-out 
+        text-white" // <--- Cambia el color del texto a blanco
+    >
+      {children}
+    </button>
+  );
+};

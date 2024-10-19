@@ -1,12 +1,83 @@
 //creacion de la funcion Modal para que el usuario deje su comentario.
 
-import { forwardRef, useRef } from "react";
+// import { forwardRef, useImperativeHandle, useRef } from "react";
 
-export function Modal = forwardRef(({ children, ref }) =>{
-    const dialogRef = useRef(null)
+// const Modal = forwardRef(({ children }, ref) =>{
+//     const dialogRef = useRef(null)
+
+//     const closeModal = () => {
+//         dialogRef.current.close()
+//     }
+//     const openModal = () => {
+//         dialogRef.current.showModal()
+//     }
+//     useImperativeHandle(ref, () => {
+//         return {
+//             openModal,
+//             closeModal
+//         }
+//     })
     
-    return (
-        <dialog ref={dialogRef}>
-        </dialog>
-    )
-})          
+//     return (
+//         <div className="fixed inset-0 bg-[#171D1F] bg-opacity-80">
+//             <dialogRef className="rounded-2xl bg-[#3E3E3F] p-6 w-[960px] max-w-[80%] border-none">
+//                <header className="flex justify-end">
+//                <button className="bg-transparent cursor-pointer border-none text-[#E1E1E1] text-lg font-normal leading-[150%]">
+//                     X
+//                 </button>
+//                 </header> 
+//                 {children}              
+//             </dialogRef>
+//         </div>
+//     )
+// })          
+
+
+
+
+
+
+
+
+'use client';
+
+import React, { forwardRef, useImperativeHandle, useRef, useState } from "react"; // Asegúrate de importar React
+import { Modal, Button, Box } from '@mui/material';
+
+export const CustomModal = forwardRef(({ children }, ref) => {
+  const [open, setOpen] = useState(false); // Cambia React.useState a useState
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  useImperativeHandle(ref, () => ({
+    openModal: handleOpen,
+    closeModal: handleClose,
+  }));
+
+  return (
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+      className="flex justify-center items-center"
+    >
+      <Box className="rounded-2xl bg-[#3E3E3F] p-6 w-[80%] max-w-[960px]">
+        <header className="flex justify-end">
+          <Button
+            onClick={handleClose}
+            className="bg-transparent cursor-pointer border-none text-[#E1E1E1] text-lg font-normal leading-[150%]"
+          >
+            X
+          </Button>
+        </header>
+        <div>
+          {children}
+        </div>
+      </Box>
+    </Modal>
+  );
+});
+
+

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Avatar } from "../Avatar";
-
-import { incrementThumbsUp } from "@/actions";
+import { incrementThumbsUp,postComment } from "@/actions";
 import { ThumbsUpButton } from "./ThumbsUpButton";
 import Link from "next/link";
+import { ModalComment } from "../ModalComment";
+
 
 export const CardPost = ({ post, highlight }) => {
     const submitThumbsUp = incrementThumbsUp.bind(null, post);
@@ -27,12 +28,19 @@ export const CardPost = ({ post, highlight }) => {
                 <footer className="p-4 bg-gray-800  bg-transparent dark:bg-gray-700 rounded-b-lg flex justify-between items-center">
                     <div>
                         <form action={submitThumbsUp}>
-                            <ThumbsUpButton />
+                            <ThumbsUpButton />                        
+                            <p>
+                                {post.likes} likes
+                                            
+                            </p>
                         </form>
-                        <p>
-                            {post.likes} likes
-                            {post.comments && ` • ${post.comments} comentários`}
-                        </p>
+                        <div>
+                          <ModalComment />
+                          <p>
+                            {post.comments} comments
+                          </p>
+                        </div>
+
                     </div>
                     <Avatar
                         imageSrc={post.author.avatar}

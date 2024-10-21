@@ -15,7 +15,7 @@ async function getPostBySlug(slug) {
             },
             include: {
                 author: true,
-                // comment: true
+                // comments: true
             }
         });
 
@@ -45,10 +45,10 @@ async function getPostBySlug(slug) {
 const PagePost = async ({ params }) => {
     const post = await getPostBySlug(params.slug);
     return (
-        <div className="some-class">
+        <div className="max-w-[600px] p-4 bg-white dark:bg-[#171D1F] text-black dark:text-white rounded-md shadow-md">
             <CardPost post={post} highlight />
-            <h3 className="bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md shadow-md">Código:</h3>
-            < div className="bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md shadow-md " >
+            <h3 className="w-[500px] bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md ">Código:</h3>
+            < div className="w-[500px] min-h-4 text-justify bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md  " >
                 <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
             </div >
         </div >

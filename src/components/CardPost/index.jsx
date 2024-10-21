@@ -7,9 +7,11 @@ import { ModalComment } from "../ModalComment";
 
 
 export const CardPost = ({ post, highlight }) => {
+
     const submitThumbsUp = incrementThumbsUp.bind(null, post);
+    const submitComment = postComment.bind(null, post)
     return (
-                <article className="w-[486px] rounded-md bg-white dark:bg-[#171D1F] min-h-[500px] flex flex-col">
+                <article className="w-[490px] rounded-md bg-white dark:bg-[#171D1F] min-h-[500px] flex flex-col">
                 <header className="rounded-t-lg bg-slate-300 dark:bg-gray-700 p-6">
                     <figure className={`relative ${highlight ? 'h-[300px]' : 'h-[133px]'}`}>
                         <Image
@@ -27,7 +29,7 @@ export const CardPost = ({ post, highlight }) => {
                 </section>
                 <footer className="p-4 bg-gray-800  bg-transparent dark:bg-gray-700 rounded-b-lg flex justify-between items-center">
                     <div>
-                        <form action={submitThumbsUp}>
+                        <form  className = "flex" action={submitThumbsUp}>
                             <ThumbsUpButton />                        
                             <p>
                                 {post.likes} likes
@@ -35,9 +37,9 @@ export const CardPost = ({ post, highlight }) => {
                             </p>
                         </form>
                         <div>
-                          <ModalComment />
+                          <ModalComment  action={submitComment}/>
                           <p>
-                            {post.comments} comments
+                            {post.comments} 
                           </p>
                         </div>
 

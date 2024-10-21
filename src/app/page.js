@@ -32,7 +32,7 @@ async function getAllPosts(page, searchTerm) {
       orderBy: { id: 'desc' },
       include: {
         author: true,
-        // comment: true
+        // comments: true
       }
     })
 

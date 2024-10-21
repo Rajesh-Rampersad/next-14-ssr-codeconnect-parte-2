@@ -63,11 +63,18 @@ export const CustomModal = forwardRef(({ children }, ref) => {
       aria-describedby="modal-description"
       className="flex justify-center items-center"
     >
-      <Box className="rounded-2xl bg-[#3E3E3F] p-6 w-[80%] max-w-[960px]">
+      <Box className="dialog rounded-2xl bg-gray-800 p-6 w-[960px] max-w-[80%] border-none">
         <header className="flex justify-end">
           <Button
             onClick={handleClose}
-            className="bg-transparent cursor-pointer border-none text-[#E1E1E1] text-lg font-normal leading-[150%]"
+            className="  background-color: transparent;
+                          cursor: pointer;
+                          border: none;
+                          color: #E1E1E1;
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 150%;ormal leading-[150%]"
           >
             X
           </Button>

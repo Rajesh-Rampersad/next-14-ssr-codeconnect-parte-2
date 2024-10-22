@@ -22,7 +22,7 @@ export const CardPost = ({ post, highlight }) => {
                         />
                     </figure>
                 </header>
-                <section className="flex-grow flex flex-col  text-black dark:text-white gap-16">
+                <section className="flex-grow flex flex-col  text-black dark:text-white gap-8">
                     <h2 className="text-lg font-semibold leading-relaxed mb-0">{post.title}</h2>
                     <p className="text-sm font-normal leading-relaxed mb-0 flex-grow">{post.body}</p>
                     <Link href={`/posts/${post.slug}`} className="no-underline cursor-pointer" >Ver detalhes</Link>
@@ -32,21 +32,20 @@ export const CardPost = ({ post, highlight }) => {
                         <form  className = "flex" action={submitThumbsUp}>
                             <ThumbsUpButton />                        
                             <p>
-                                {post.likes} likes
-                                            
+                                {post.likes} likes                                            
                             </p>
                         </form>
                         <div>
                           <ModalComment  action={submitComment}/>
                           <p>
-                            {post.comments} 
+                          {post.comments}
                           </p>
                         </div>
 
                     </div>
                     <Avatar
-                        imageSrc={post.author.avatar}
-                        name={post.author.username}
+                    imageSrc={post.author.avatar}
+                    name={post.author.username}
                     />
                 </footer>
             </article>

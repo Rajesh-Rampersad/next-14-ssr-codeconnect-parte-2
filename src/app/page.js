@@ -8,6 +8,7 @@ import db from "../../prisma/db"
 
 async function getAllPosts(page, searchTerm) {
   try {
+
     const where = {}
 
     if (searchTerm) {
@@ -16,7 +17,6 @@ async function getAllPosts(page, searchTerm) {
         mode: 'insensitive'
       }
     }
-
 
     const perPage = 4;
     const skip = (page - 1) * perPage;

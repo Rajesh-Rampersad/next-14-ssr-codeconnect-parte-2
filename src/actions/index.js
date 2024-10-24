@@ -5,7 +5,7 @@ import db from "../../prisma/db";
 
 export async function incrementThumbsUp(post) {
 
-    await new Promise((resolve) => setTimeout(resolve, 1200))
+    await new Promise((resolve) => setTimeout(resolve, 600))
 
     await db.post.update({
         where: {

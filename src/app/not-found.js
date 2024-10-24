@@ -24,8 +24,8 @@ export default function NotFound() {
     <div className="h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-700 text-center">
       {/* Imagen que ocupa el 95% del contenedor */}
       <div className="w-[95%] max-w-xl">
-        <Image 
-          src={banner} 
+        <Image
+          src={banner}
           alt="Erro 404 - Página não encontrada"
           className="w-full object-contain"
         />
@@ -43,7 +43,7 @@ export default function NotFound() {
 
       {/* Enlace para volver al feed */}
       <Link href="/" className="mt-6 text-[#81FE88] flex items-center gap-2 text-lg font-semibold">
-        Voltar ao feed 
+        Voltar ao feed
         <ArrowBack color='#81FE88' />
       </Link>
     </div>

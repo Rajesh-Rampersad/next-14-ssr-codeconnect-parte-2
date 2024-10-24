@@ -14,11 +14,11 @@ async function getPostBySlug(slug) {
             },
             include: {
                 author: true,
-                // comments: {
-                //     include: {
-                //         author: true
-                //     }
-                // }
+                comments: {
+                    include: {
+                        author: true
+                    }
+                }
             }
         })
 

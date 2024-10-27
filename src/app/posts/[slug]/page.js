@@ -9,61 +9,56 @@ import { CommentList } from "@/components/CommentList";
 async function getPostBySlug(slug) {
     try {
         const post = await db.post.findFirst({
-            where: {
-                slug
-            },
+            where: { slug },
             include: {
                 author: true,
                 comments: {
-                    include: {
-                        author: true
-                    }
-                }
-            }
-        })
+                    include: { author: true },
+                },
+            },
+        });
 
         if (!post) {
-            throw new Error(`Post com o slug ${slug} não foi encontrado`);
+            throw new Error(`Post con el slug ${slug} no fue encontrado`);
         }
 
-
-
-        const processedContent = await remark()
-            .use(html)
-            .process(post.markdown);
+        const processedContent = await remark().use(html).process(post.markdown);
         const contentHtml = processedContent.toString();
-
         post.markdown = contentHtml;
 
         return post;
     } catch (error) {
-        logger.error("Falha ao buscar post pelo slug", { error, slug });
-
-
+        logger.error("Error al buscar el post por slug", { error, slug });
+        redirect('/not-found');
     }
-    redirect('/not-found')
-
 }
 
 const PagePost = async ({ params }) => {
-    const post = await getPostBySlug(params.slug);
+    // Asegúrate de que params.slug se maneje de forma asíncrona
+    const { slug } = await params; // Esto debe ser await
+    console.log('Slug obtenido:', slug); // Debugging
+
+    const post = await getPostBySlug(slug);
+    console.log('Post obtenido:', post); // Debugging
+
+    if (!post) {
+        return <p>Post no encontrado</p>;
+    }
+
     return (
         <div className="max-w-[670px] p-4 bg-white dark:bg-[#171D1F] text-black dark:text-white rounded-md shadow-md">
             <CardPost post={post} highlight />
-            <h3 className="w-[500px] bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md ">Código:</h3>
+            <h3 className="w-[500px] bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md">Código:</h3>
             <div className="w-[500px] min-h-4 text-justify bg-white dark:bg-[#171D1F] text-black dark:text-white p-4 rounded-md">
                 <div className="break-all" dangerouslySetInnerHTML={{ __html: post.markdown }} />
             </div>
             <div>
-                <h2>
-                    Comentários
-                </h2>
+                <h2>Comentarios</h2>
                 <div>
                     <CommentList comments={post.comments} />
                 </div>
             </div>
         </div>
-
     );
 };
 

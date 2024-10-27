@@ -14,7 +14,7 @@ async function main() {
         create: author,
     });
 
-    console.log('Author created', ana);
+  
 
     const posts = [
         {

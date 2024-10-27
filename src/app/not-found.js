@@ -27,7 +27,7 @@ export default function NotFound() {
         <Image
           src={banner}
           alt="Erro 404 - Página não encontrada"
-          className="w-full object-contain"
+          className=" text-black dark:text-white w-full object-contain"
         />
       </div>
 

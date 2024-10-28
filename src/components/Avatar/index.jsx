@@ -1,7 +1,6 @@
 import Image from "next/image";
 import PropTypes from 'prop-types'; // Puedes usar PropTypes para validar las props
 
-
 export const Avatar = ({ name, imageSrc }) => {
     if (!name || !imageSrc) {
         return null; // O puedes renderizar un placeholder
@@ -12,10 +11,10 @@ export const Avatar = ({ name, imageSrc }) => {
             <li>
                 <Image 
                     src={imageSrc} 
-                    objectFit="cover" 
+                    style={{ objectFit: 'cover' }}
                     width={32} 
                     height={32} 
-                    alt={`Avatar do(a) ${name}`} 
+                    alt={`Avatar of ${name || 'Anonymous User'}`} // Ensure alt text is always meaningful
                 />
             </li>
             <li>
@@ -25,7 +24,12 @@ export const Avatar = ({ name, imageSrc }) => {
     );
 };
 
+Avatar.defaultProps = {
+    name: 'Usuario Anónimo',
+    imageSrc: null,
+};
+
 Avatar.propTypes = {
-    name: PropTypes.string.isRequired,
-    imageSrc: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    imageSrc: PropTypes.string,
 };

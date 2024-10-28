@@ -13,7 +13,13 @@ async function getPostBySlug(slug) {
             include: {
                 author: true,
                 comments: {
-                    include: { author: true },
+                    include: {
+                        author: true,
+                        children: {
+                            include: { author: true }
+                        }
+                    },
+                    where: { parentId: null }
                 },
             },
         });
@@ -36,10 +42,10 @@ async function getPostBySlug(slug) {
 const PagePost = async ({ params }) => {
     // Asegúrate de que params.slug se maneje de forma asíncrona
     const { slug } = await params; // Esto debe ser await
-    console.log('Slug obtenido:', slug); // Debugging
+
 
     const post = await getPostBySlug(slug);
-    console.log('Post obtenido:', post); // Debugging
+
 
     if (!post) {
         return <p>Post no encontrado</p>;

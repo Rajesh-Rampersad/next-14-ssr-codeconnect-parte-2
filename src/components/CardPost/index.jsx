@@ -22,6 +22,7 @@ export const CardPost = ({ post, highlight }) => {
                         alt={`Capa do post de título: ${post.title}`}
                         fill
                         className="object-cover" // Aplicar estilo aquí
+                        style={{ objectFit: 'cover' }}
                     />
                 </figure>
             </header>
@@ -30,7 +31,7 @@ export const CardPost = ({ post, highlight }) => {
                 <p className="text-sm font-normal leading-relaxed mb-0 flex-grow">{post.body}</p>
                 <Link href={`/posts/${post.slug}`} className="no-underline cursor-pointer">Ver detalhes</Link>
             </section>
-            <footer className="p-4 bg-gray-800 dark:bg-gray-700 rounded-b-lg flex justify-between items-center">
+            <footer className="p-4 bg-white-600 dark:bg-gray-700 rounded-b-lg flex justify-between items-center">
                 <div>
                     {/* Form for thumbs up */}
                     <form className="flex" action={submitThumbsUp}>

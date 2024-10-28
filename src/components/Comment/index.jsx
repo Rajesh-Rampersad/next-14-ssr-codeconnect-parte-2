@@ -11,10 +11,11 @@ const { text, createdAt, author } = comment
         
         <div className="flex text-center gap-8">
             <Image 
-                src={comment.author?.avatar || '/default-avatar.png'}
+                src={comment.author?.avatar }
                 width={32} 
                 height={32} 
-                alt={`Avatar de ${comment.author?.name || 'Usuario'}`} 
+                alt={comment.author?.name ? `Avatar de ${comment.author.name}` : 'Avatar de un usuario anónimo'} 
+                style={{ objectFit: 'cover' }}
             />
             <strong>@{comment.author?.name || 'Usuario Anónimo'}</strong>
             <p>{comment.text}</p>

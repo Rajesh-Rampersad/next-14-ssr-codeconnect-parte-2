@@ -20,7 +20,7 @@ async function getAllPosts(page, searchTerm) {
 
     // Obtener total de posts para la paginación
     const totalItems = await db.post.count({ where });
- 
+
 
     const totalPages = Math.ceil(totalItems / perPage);
     const prev = page > 1 ? page - 1 : null;
@@ -35,27 +35,26 @@ async function getAllPosts(page, searchTerm) {
       include: {
         author: true,
         comments: true
-        
+
       }
     });
 
-    
+
     return { data: posts, prev, next };
   } catch (error) {
-   error('Falha ao obter posts', { error });
+    error('Falha ao obter posts', { error });
     return { data: [], prev: null, next: null };
   }
 }
 
 export default async function Home({ searchParams }) {
-  const currentPage = parseInt(searchParams?.page || "1", 10); // Asegura que 'page' sea tratado como un número
-  const searchTerm = searchParams?.q || null; // Asignar null si no hay término de búsqueda
 
-
+  const { page, searchTerm } = await searchParams
+  const currentPage = parseInt(page || "1")
 
   const { data: posts, prev, next } = await getAllPosts(currentPage, searchTerm);
 
- 
+
 
   return (
     <main className='flex-wrap justify-between gap-24 grid grid-cols-2 grid-rows-1'>

@@ -13,7 +13,7 @@ export const Replies = ({ comment }) => {
 
     async function fetchData() {
         try {
-            console.log("Fetching replies for comment ID:", comment.id); // Debugging log
+     // Aquí se puede hacer la petición a la API para obtener las respuestas del comentario
             const response = await fetch(`/api/comment/${comment.id}/replies`);
             if (!response.ok) {
                 // Handle 404 specifically
